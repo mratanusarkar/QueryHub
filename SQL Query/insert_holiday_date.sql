@@ -52,7 +52,7 @@ BEGIN
             IF DATENAME(WEEKDAY, @CurrentDate) IN (@HolidayDay) /* enter what date you want to insert holiday */
 
                 /* insert a new row query here */
-                PRINT CONVERT(varchar, @CurrentDate, 23)
+                PRINT CONVERT(VARCHAR, @CurrentDate, 23)
 
                 -----------------------------------------------
                 ---------- UNCOMMENT BELOW TO INSERT ----------
@@ -66,7 +66,7 @@ BEGIN
                 )
                 VALUES (
                     @OriginId,
-                    CONVERT(varchar, @CurrentDate, 23),
+                    CONVERT(VARCHAR, @CurrentDate, 23),
                     @HolidayReason,
                     GETDATE(),
                     GETDATE()
@@ -75,7 +75,7 @@ BEGIN
                 ----------- END OF INSERT STATEMENT -----------
                 -----------------------------------------------
 
-            SET @CurrentDate = CONVERT(varchar, DATEADD(day, 1, @CurrentDate), 101); /* increment current date */
+            SET @CurrentDate = CONVERT(VARCHAR, DATEADD(day, 1, @CurrentDate), 101); /* increment current date */
         END
 
         /* END OF ALGORITHM */

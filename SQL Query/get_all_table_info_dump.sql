@@ -51,5 +51,5 @@ FROM sys.columns                           s
     LEFT OUTER JOIN sys.computed_columns  sc ON s.object_id=sc.object_id AND s.column_id=sc.column_id
     LEFT OUTER JOIN sys.check_constraints cc ON s.object_id=cc.parent_object_id AND s.column_id=cc.parent_column_id
 -- add, modify or remove the where statement below according to the type of tables you want
-WHERE o.type_desc in ('USER_TABLE', 'VIEW')
+WHERE o.type_desc IN ('USER_TABLE', 'VIEW')
 ORDER BY sh.name+'.'+o.name,s.column_id;
