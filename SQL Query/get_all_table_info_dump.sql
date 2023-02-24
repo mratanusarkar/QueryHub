@@ -1,3 +1,18 @@
+/*
+ * Author: Atanu Sarkar
+ * Created: 07-09-2021
+ * Last Edited: 24-02-2023
+ * Last Version: v1.0.1
+ *
+ * MSSQL Script to get full info dump from database
+ * 
+ * This script will pull all tables (system tables, user tables and views) 
+ * and dump all column names, datatype, constrains and other info in a tabular structure
+ * so that you can export and share across in excel
+ *
+ */
+
+
 -- Method 1
 SELECT 
 o.name, c.name 

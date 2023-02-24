@@ -1,3 +1,17 @@
+/*
+ * Author: Atanu Sarkar
+ * Created: 29-06-2022
+ * Last Edited: 24-02-2023
+ * Last Version: v1.0.1
+ *
+ * MSSQL Script to get a table info dump from database
+ * 
+ * This script will dump column id, names, datatype, and other info of a database table
+ * so that you can export and share across in excel
+ *
+ */
+
+
 DECLARE @TableName NVARCHAR(255);
 SET @TableName = '<NAME OF THE TABLE YOU WANT>'
 

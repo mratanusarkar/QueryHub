@@ -1,4 +1,11 @@
 /*
+ * Author: Atanu Sarkar
+ * Created: 20-06-2022
+ * Last Edited: 24-02-2023
+ * Last Version: v1.0.1
+ *
+ * DB query about rankedGroupTables and PARTITION
+ * 
  * Use Case:
  * Imagine you have two tables: items and item_histories
  * item contains details of items and item_histories contain all transactions with item in real time.
@@ -7,8 +14,11 @@
  * you want full item details along with a new column containing the latest transaction from item_histories
  * you can't simply use JOIN here, and it's the perfect use-case to use PARTITION and rankedGroupTables
  *
- * see below:
+ * Method 1 & 2: are for observation and 
+ * Method 3: is final product of the above use-case
+ * see below and modify table & column names as per requirement:
  */
+
 
 -- Method 1: (observe partition and ranked grouped table)
 WITH rankedGroupTables AS (

@@ -1,3 +1,19 @@
+/*
+ * Author: Atanu Sarkar
+ * Created: 14-12-2022
+ * Last Edited: 24-02-2023
+ * Last Version: v1.0.1
+ *
+ * MSSQL Script to search & scan a string or word in full database
+ * 
+ * This script scan through all tables in a database
+ * and pick out all columns and cells that contains the @SearchStr
+ * you will be able to detect the table name and column name and row where the string was found
+ * and do what you wish to do with that info.
+ *
+ */
+
+
 DECLARE @SearchStr NVARCHAR(255)
 SET @SearchStr = '<ENTER THE STRING YOU WANT TO SEARCH>'
 

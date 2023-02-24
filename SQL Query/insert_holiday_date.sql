@@ -1,7 +1,8 @@
 /*
  * Author: Atanu Sarkar
- * Last Edited: 21-01-2022
- * Last Version: v1.0.0
+ * Created: 29-06-2022
+ * Last Edited: 24-02-2023
+ * Last Version: v1.0.1
  *
  * MSSQL Script to insert holidays into DB
  * 
