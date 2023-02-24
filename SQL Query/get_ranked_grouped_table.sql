@@ -23,24 +23,24 @@ WITH rankedGroupTables AS (
   SELECT mainTable.*, ROW_NUMBER() OVER (PARTITION BY item_id ORDER BY updatedAt DESC) AS rowNumber
   FROM item_histories AS mainTable
 )
-SELECT item_id, [other_columns_from_histTable] as 'column_names', updatedAt FROM rankedGroupTables WHERE rowNumber = 1;
+SELECT item_id, [other_columns_from_histTable] AS 'column_names', updatedAt FROM rankedGroupTables WHERE rowNumber = 1;
 
 
 -- Method 3: (data from main item table + latest transaction from item_histories)
-WITH item_table as (
+WITH item_table AS (
     SELECT * FROM items
     WHERE updatedAt < DATEADD(DAY, -3, GETDATE())
     -- example: if you have status colum, you can throw that in to add more filters:
     AND [item_status] IN ('Shipment Open', 'Shipment In Transit', 'Shipment Delivered')
 ),
-hist_table_with_top_data as (
-    SELECT item_id, [other_columns_from_histTable] as 'column_names', createdAt as 'histCreatedAt', updatedAt as 'histUpdatedAt' FROM (
+hist_table_with_top_data AS (
+    SELECT item_id, [other_columns_from_histTable] AS 'column_names', createdAt AS 'histCreatedAt', updatedAt AS 'histUpdatedAt' FROM (
         SELECT mainTable.*, ROW_NUMBER() OVER (PARTITION BY item_id ORDER BY updatedAt DESC) AS rowNumber
         FROM item_histories AS mainTable
     ) AS resultTable
     WHERE rowNumber = 1
 )
-SELECT [columns_from_itemTable] as 'item_column_names', [columns_from_histTable] as 'hist_column_names'
+SELECT [columns_from_itemTable] AS 'item_column_names', [columns_from_histTable] AS 'hist_column_names'
 FROM item_table LEFT JOIN hist_table_with_top_data
 ON item_table.item_id = hist_table_with_top_data.item_id
 
