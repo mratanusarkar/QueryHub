@@ -25,7 +25,8 @@ SELECT
 o.name AS [Table Name], c.name AS [Column / Data Field Names]
 FROM sys.columns c
 INNER JOIN sys.objects o ON c.object_id=o.object_id
--- where c.name = '<name of the column you want to find>'
+-- optional parameter if you want to filter for specific column
+-- WHERE c.name = '<name of the column you want to find>'
 ORDER BY o.name, c.name;
 
 -- Method 3
